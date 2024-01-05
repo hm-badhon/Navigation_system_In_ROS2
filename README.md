@@ -96,8 +96,8 @@ ros2 run nav2_map_server map_server_cli -f maps/m
 ls
 ```
 Now you can find this file:
+![image-1](https://github.com/hm-badhon/Navigation_system_In_ROS2/assets/85755347/a05ba16e-a0ba-414c-b7d7-7f6acddaf526)
 
-![Alt text](image-1.png)
 
 
 ```bash
