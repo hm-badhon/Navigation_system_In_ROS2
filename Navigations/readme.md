@@ -6,9 +6,9 @@ To install the ROS Humble Navigation packages, follow the steps below:
 
 ## 2. Run the following command to install the necessary packages:
 
-    ```bash
-    sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
-    ```
+```bash
+sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
+```
 
    This command installs the ROS Humble Navigation core, bringup, and TurtleBot3-related packages.
 
@@ -26,7 +26,6 @@ gedit ~/.bashrc
 ```bash
 export TURTLEBOT3_MODEL=waffle
 ```
-
 
 
 ```bash
@@ -98,7 +97,7 @@ Now you can find this file:
 
 
 
-# If get any issue for map dds
+# *** If get any issue for map dds
 
 ```bash
 sudo apt update
@@ -124,7 +123,10 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ls
 ```
 
-### Open this "waffle.yaml" file
+```bash
+sudo gedit waffle.yaml
+```
+
 
 
  ## Change 

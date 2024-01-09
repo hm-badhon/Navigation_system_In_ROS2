@@ -113,3 +113,13 @@ Now you can find this file:
 ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=ros2_humble/src/maps/my_map.yaml
 
 ```
+## Author
+
+- **H.M. Mehedi Hasan (Badhon)**
+
+![85755347](https://github.com/hm-badhon/Natural_Language_Processing_NLP_with_hmb/assets/85755347/1c4c9b08-71fe-463d-8117-cc2b23acb3d9)
+
+  - [GitHub Profile](https://github.com/hm-badhon)
+  - [LinkedIn Profile](https://bd.linkedin.com/in/h-m-mehedi-hasan-575563159)
+  - [Email](mailto:h.m.badhoneee@gmail.com)
+  - Associate Robotics Engineer, NSL
