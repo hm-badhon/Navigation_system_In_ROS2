@@ -16,7 +16,6 @@ To install the ROS Humble Navigation packages, follow the steps below:
 
 4. Once the installation is finished, you can proceed with the configuration and usage of the installed packages as per the documentation.
 
-For more information, refer to the official ROS documentation and package-specific README files.
 
 * 
 ```bash
@@ -122,13 +121,24 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 /opt/ros/humble/share/turtlebot3_navigation2/param/
 ```
 
+```bash
+ls
+```
+
+### Open this "waffle.yaml" file
+
+
+ ## Change 
+```bash
+robot_model_type: "differential"
+```
+ ## to
+
+```bash
+robot_model_type: "nav2_amcl::DifferentialMotionModel"
+```
 
 
 
 
-
-
-
-
-
-
+For more information, refer to the official ROS documentation and package-specific README files.
