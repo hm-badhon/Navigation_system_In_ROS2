@@ -90,9 +90,43 @@ mkdir maps
 ```bash
 ros2 run nav2_map_server map_server_cli -f maps/m 
 ```
+
 ```bash
 ls
 ```
 Now you can find this file:
 
 ![Alt text](image-1.png)
+
+
+
+# If get any issue for map dds
+
+```bash
+sudo apt update
+```
+```bash
+sudo apt install ros-humble-rmw-cyclonedds-cpp
+```
+
+## Add in bashrc 
+```bash
+gedit .bashrc
+```
+```bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+```
+# Go to below this directory
+/opt/ros/humble/share/turtlebot3_navigation2/param/
+
+
+
+
+
+
+
+
+
+
+
+
