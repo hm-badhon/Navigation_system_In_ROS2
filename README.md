@@ -1,35 +1,31 @@
-# Navigation_system_In_ROS2
-
 # ROS Humble Navigation Package Installation
 
 To install the ROS Humble Navigation packages, follow the steps below:
 
-1. Open a terminal.
+## 1. Open a terminal.
 
-2. Run the following command to install the necessary packages:
+## 2. Run the following command to install the necessary packages:
 
-    ```bash
-    sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
-    ```
+```bash
+sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
+```
 
    This command installs the ROS Humble Navigation core, bringup, and TurtleBot3-related packages.
 
-3. Wait for the installation process to complete.
+## 3. Wait for the installation process to complete.
 
-4. Once the installation is finished, you can proceed with the configuration and usage of the installed packages as per the documentation.
+## 4. Once the installation is finished, you can proceed with the configuration and usage of the installed packages as per the documentation.
 
 
-* 
 ```bash
 gedit ~/.bashrc
 ```
 
-* change and add export line
+## Add export line
 
 ```bash
-TURTLEBOT3_MODEL=waffle
+export TURTLEBOT3_MODEL=waffle
 ```
-
 
 
 ```bash
@@ -44,7 +40,7 @@ OUTPUT:
 ```bash
 TURTLEBOT3_MODEL=waffle
 ```
-*
+## Gazebo
 ```bash
 gazebo
 ```
@@ -84,34 +80,71 @@ ls /ros2_humble/src/
 ```bash
 mkdir maps
 ```
+```bash
+mkdir maps
+```
 
 ```bash
 ros2 run nav2_map_server map_server_cli -f maps/m 
 ```
+
+```bash
+ls
+```
+Now you can find this file:
+
+![Alt text](image-1.png)
+
+
+
+# *** If get any issue for map dds
+
+```bash
+sudo apt update
+```
+```bash
+sudo apt install ros-humble-rmw-cyclonedds-cpp
+```
+
+## Add in bashrc 
+```bash
+gedit .bashrc
+```
+```bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+```
+# Go to below this directory
+
+```bash
+/opt/ros/humble/share/turtlebot3_navigation2/param/
+```
+
 ```bash
 ls
 ```
 
+```bash
+sudo gedit waffle.yaml
+```
 
-Now you can find this file:
 
 
-
-![image-1](https://github.com/hm-badhon/Navigation_system_In_ROS2/assets/85755347/a05ba16e-a0ba-414c-b7d7-7f6acddaf526)
-
+ ## Change 
+```bash
+robot_model_type: "differential"
+```
+ ## to
 
 ```bash
 
-/opt/ros/humble/share
+robot_model_type: "nav2_amcl::DifferentialMotionModel"
 
 ```
 
-# Navigation
-```bash
+------------------------------------------
 
-ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=ros2_humble/src/maps/my_map.yaml
 
-```
+
 ## Author
 
 - **H.M. Mehedi Hasan (Badhon)**
