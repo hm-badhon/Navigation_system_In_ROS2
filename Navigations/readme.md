@@ -2,9 +2,9 @@
 
 To install the ROS Humble Navigation packages, follow the steps below:
 
-1. Open a terminal.
+## 1. Open a terminal.
 
-2. Run the following command to install the necessary packages:
+## 2. Run the following command to install the necessary packages:
 
     ```bash
     sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
@@ -12,20 +12,19 @@ To install the ROS Humble Navigation packages, follow the steps below:
 
    This command installs the ROS Humble Navigation core, bringup, and TurtleBot3-related packages.
 
-3. Wait for the installation process to complete.
+## 3. Wait for the installation process to complete.
 
-4. Once the installation is finished, you can proceed with the configuration and usage of the installed packages as per the documentation.
+## 4. Once the installation is finished, you can proceed with the configuration and usage of the installed packages as per the documentation.
 
 
-* 
 ```bash
 gedit ~/.bashrc
 ```
 
-* change and add export line
+## Add export line
 
 ```bash
-TURTLEBOT3_MODEL=waffle
+export TURTLEBOT3_MODEL=waffle
 ```
 
 
@@ -42,7 +41,7 @@ OUTPUT:
 ```bash
 TURTLEBOT3_MODEL=waffle
 ```
-*
+## Gazebo
 ```bash
 gazebo
 ```
@@ -135,10 +134,14 @@ robot_model_type: "differential"
  ## to
 
 ```bash
+
 robot_model_type: "nav2_amcl::DifferentialMotionModel"
+
 ```
 
+------------------------------------------
 
 
 
-For more information, refer to the official ROS documentation and package-specific README files.
+
+# For more information, refer to the official ROS documentation and package-specific README files.
