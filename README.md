@@ -116,7 +116,7 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 # Go to below this directory
 
 ```bash
-/opt/ros/humble/share/turtlebot3_navigation2/param/
+cd /opt/ros/humble/share/turtlebot3_navigation2/param/
 ```
 
 ```bash
@@ -149,7 +149,7 @@ robot_model_type: "nav2_amcl::DifferentialMotionModel"
 
 - **H.M. Mehedi Hasan (Badhon)**
 
-![85755347](https://github.com/hm-badhon/Natural_Language_Processing_NLP_with_hmb/assets/85755347/1c4c9b08-71fe-463d-8117-cc2b23acb3d9)
+<!-- ![85755347](https://github.com/hm-badhon/Natural_Language_Processing_NLP_with_hmb/assets/85755347/1c4c9b08-71fe-463d-8117-cc2b23acb3d9) -->
 
   - [GitHub Profile](https://github.com/hm-badhon)
   - [LinkedIn Profile](https://bd.linkedin.com/in/h-m-mehedi-hasan-575563159)
