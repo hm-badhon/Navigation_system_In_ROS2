@@ -18,7 +18,6 @@ To install the ROS Humble Navigation packages, follow the steps below:
 
 4. Once the installation is finished, you can proceed with the configuration and usage of the installed packages as per the documentation.
 
-For more information, refer to the official ROS documentation and package-specific README files.
 
 * 
 ```bash
@@ -123,3 +122,6 @@ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:
   - [LinkedIn Profile](https://bd.linkedin.com/in/h-m-mehedi-hasan-575563159)
   - [Email](mailto:h.m.badhoneee@gmail.com)
   - Associate Robotics Engineer, NSL
+
+
+For more information, refer to the official ROS documentation and package-specific README files.
