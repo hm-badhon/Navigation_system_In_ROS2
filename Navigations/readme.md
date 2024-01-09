@@ -117,8 +117,10 @@ gedit .bashrc
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ```
 # Go to below this directory
-/opt/ros/humble/share/turtlebot3_navigation2/param/
 
+```bash
+/opt/ros/humble/share/turtlebot3_navigation2/param/
+```
 
 
 
