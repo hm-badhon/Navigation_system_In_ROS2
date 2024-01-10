@@ -140,6 +140,26 @@ robot_model_type: "nav2_amcl::DifferentialMotionModel"
 
 ------------------------------------------
 
+# Close all the terminals
+   ## Open two terminal
+      ### First terminals for launch the specific world
+               
+         ```bash
+            ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+            ```
+      ### Second forrun saved maps yaml file
+         ```bash
+            ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=ros2_humble/src/maps/my_maps.yaml
+         ```
+
+
+
+
+
+
+
+
+
 
 
 ## Author
