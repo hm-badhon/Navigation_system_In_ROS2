@@ -82,7 +82,7 @@ mkdir maps
 ```
 
 ```bash
-ros2 run nav2_map_server map_server_cli -f maps/m 
+ros2 run nav2_map_server map_saver_cli -f maps/my_maps
 ```
 
 ```bash
