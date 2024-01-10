@@ -80,9 +80,6 @@ ls /ros2_humble/src/
 ```bash
 mkdir maps
 ```
-```bash
-mkdir maps
-```
 
 ```bash
 ros2 run nav2_map_server map_server_cli -f maps/m 
