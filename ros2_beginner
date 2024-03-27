@@ -1,0 +1,148 @@
+
+########
+ros2 run demo_nodes_cpp talker
+ros2 run demo_nodes_cpp listener
+rqt_graph
+
+########
+ros2 run turlesim turtlesim_node
+ros2 run turtlesim turtle_teleop_key
+rqt_graph
+
+sudo apt install python3-colcon-common-extensions
+
+# gedit bashrc
+
+add
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+save it
+
+##########
+source ~/.bashrc
+
+apply all the terminal 
+
+
+######
+mkdir ros2_work_space
+cd ros2_work_space
+mkdir src
+colcon build
+
+
+#####
+cd
+source ~/ros2_ws/install/setup.bash
+
+add
+gedit .bashrc
+source ~/ros2_ws/install/setup.bash
+
+# how to create  a package
+cd src
+ros2 pkg create my_robot_control --build-type ament_python --dependencies rclpy
+ros2 pkg create my_robot_control --build-type ament_cmake
+
+## vs code add with ros2
+##### sudo snap install code --classic
+code .
+
+
+####
+sudo apt install python3-pip
+pip3 list
+
+
+##
+pip3 list | grep setuptools
+# setuptools                           59.6.0
+change it
+pip3 install setuptools==58.2.0
+
+# setuptools                           58.2.0
+
+# build the colcon
+cd ros2_work_space/
+colcon build
+
+
+#####################
+### Create a Ros2 Node with Python and OOP
+move to 
+cd ros2_work_space/src/my_robot_control/my_robot_control
+
+# create python  file in this folder
+touch my_first_py_file.py
+
+# executable this file in terminal
+chmod +x my_first_py_file.py
+
+# move 
+cd ../..
+#vs code
+code .
+
+
+# code for python file
+
+
+# add ros extension ,c/c++ in vscode
+
+########################
+# add this code in python file my_first_py_file.py
+
+-------------------------------------
+#!/usr/bin/env python3
+
+import rclpy
+from  rclpy.node import Node
+
+class MyNode(Node):
+    def __init__(self):
+        super().__init__("first_node")
+        self.get_logger().info("Hello from ros2")
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MyNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
+
+-----------------------
+
+##########################
+# run this code
+# Edit it setup.py
+entry_points={
+        'console_scripts': [
+            "test_node = my_robot_control.my_first_py_file:main"
+        ],
+
+
+
+## then
+cd ros2_work_space
+# command
+colcon build
+# then
+source ~/.bashrc
+----
+#run
+ros2 run my_robot_control test_node
+
+
+############
+if any change run command
+----
+colcon build --symlink-install
+----
+rqt_graph
+------
+ros2 node list
+
+-
+ros2 node info /
