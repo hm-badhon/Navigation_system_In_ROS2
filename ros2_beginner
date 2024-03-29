@@ -91,28 +91,27 @@ code .
 ########################
 # add this code in python file my_first_py_file.py
 
--------------------------------------
 #!/usr/bin/env python3
 
-import rclpy
-from  rclpy.node import Node
+# import rclpy
+# from  rclpy.node import Node
 
-class MyNode(Node):
-    def __init__(self):
-        super().__init__("first_node")
-        self.get_logger().info("Hello from ros2")
+# class MyNode(Node):
+#     def __init__(self):
+#         super().__init__("first_node")
+#         self.get_logger().info("Hello from ros2")
 
-def main(args=None):
-    rclpy.init(args=args)
-    node = MyNode()
-    rclpy.spin(node)
-    rclpy.shutdown()
+# def main(args=None):
+#     rclpy.init(args=args)
+#     node = MyNode()
+#     rclpy.spin(node)
+#     rclpy.shutdown()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 
 
------------------------
+
 
 ##########################
 # run this code
@@ -149,28 +148,28 @@ ros2 node info /
 
 
 ####### update it for couter add
-#!/usr/bin/env python3
-import rclpy
-from  rclpy.node import Node
+# #!/usr/bin/env python3
+# import rclpy
+# from  rclpy.node import Node
 
-class MyNode(Node):
-    def __init__(self):
-        super().__init__("first_node")
-        self.counter_ = 0
-        self.create_timer(1.0, self.timer_callback)
+# class MyNode(Node):
+#     def __init__(self):
+#         super().__init__("first_node")
+#         self.counter_ = 0
+#         self.create_timer(1.0, self.timer_callback)
 
-    def timer_callback(self):
-        self.get_logger().info("Hello --" + str(self.counter_))
-        self.counter_ +=1
+#     def timer_callback(self):
+#         self.get_logger().info("Hello --" + str(self.counter_))
+#         self.counter_ +=1
 
-def main(args=None):
-    rclpy.init(args=args)
-    node = MyNode()
-    rclpy.spin(node)
-    rclpy.shutdown()
+# def main(args=None):
+#     rclpy.init(args=args)
+#     node = MyNode()
+#     rclpy.spin(node)
+#     rclpy.shutdown()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 
 ########################
 
@@ -239,28 +238,154 @@ ros2 interface show geometry_msgs/msg/Twist
 # 	float64 z
 
 
-################
+###########Topic 2#####
 Wrie a ROS2  publisher with python-
 -------------
 
 cd ros2_work_space/src/my_robot_control/my_robot_control
 touch draw_circle.py
 ---------------------------------
-import rclpy
-from  rclpy.node import Node
-from geometry_msgs.msg import Twist
+# import rclpy
+# from  rclpy.node import Node
+# from geometry_msgs.msg import Twist
 
 
-class DrawCircleNode(Node):
+# class DrawCircleNode(Node):
 
-    def __init__(self):
-        super().__init__("draw_circle")
-        self.cmd_vel_pub_ = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
-        self.get_logger().info("Draw cicrcle node has been started")
+#     def __init__(self):
+#         super().__init__("draw_circle")
+#         self.cmd_vel_pub_ = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
+#         self.get_logger().info("Draw cicrcle node has been started")
 
-def main(args)
-------
-ros2 topic info /turtle1/cmd_vel
+# def main(args)
+# ------
+# ros2 topic info /turtle1/cmd_vel
 --------
 # Type: geometry_msgs/msg/Twist
-------------
+----- Send velocity and angular command to the robot-------
+
+## Add in package.xml
+  <depend>geometry_msgs</depend>
+  <depend>turtlesim</depend>
+
+--class DrawCircleNode(Node):
+
+    def __init__(self):
+        super().__init__("draw_circle_n") # node name can be different
+        # ---------------------------------------(massage_type, )
+        self.cmd_vel_pub_ = self.create_publisher(Twist, "/turtle1/cmd_vel", 10)
+        self.timer_ = self.create_timer(0.5, self.send_velocity_comand)
+        self.get_logger().info("Draw cicrcle node has been started")
+
+    def send_velocity_comand(self):
+        msg = Twist()
+        msg.linear.x = 2.0
+        msg.angular.z = 1.0
+        self.cmd_vel_pub_.publish(msg)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = DrawCircleNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+
+---------------
+add in setup python
+ 'console_scripts': [
+                "test_node = my_robot_control.my_first_py_file:main",
+                "draw_circle_n = my_robot_control.draw_circle:main" # add it
+            ],
+
+colcon build --symlink-install
+# ----tr 1 publish
+ros2 run my_robot_control draw_circle_n
+# ----tr 2 subcribe
+ros2 run turtlesim turtlesim_node
+
+
+
+#######NAvigate the robot###############
+ros2 run turtlesim turtlesim_node
+ros2 topic list
+ros2 topic echo /turtle1/pose
+
+
+
+#### Subscribtion
+
+ros2 topic info /turtle1/pose
+
+ros2 interface show tutlesim/msg/pose 
+
+-------pose_subscriber.py---------
+import rclpy
+
+from rclpy.node import Node
+
+from turtlesim.msg import Pose
+
+class PoseSubscriberNode(Node):
+
+    def __init__(self):
+        super().__init__("pose_subscriber")
+        self.pose_subscriber_ =self.create_subscription(Pose, "/turtle1/pose", self.pose_callback,10)
+    
+    def pose_callback(self, msg:Pose):
+        self.get_logger().info(str(msg))
+
+def main(args= None):
+    rclpy.init(args=args)
+    node = PoseSubscriberNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+
+ -------  ----------------
+add setup.py 
+    'console_scripts': [
+                "test_node = my_robot_control.my_first_py_file:main",
+                "draw_circle_n = my_robot_control.draw_circle:main",
+                "pose_subscriber = my_robot_control.pose_subscriber:main"
+            ],
+
+
+
+
+ros2 run my_robot_control pose_subscriber 
+ros2 run turtlesim turtlesim_node
+rqt_graph
+
+
+------------------
+#!/usr/bin/env python3
+
+
+import rclpy
+
+from rclpy.node import Node
+
+from turtlesim.msg import Pose
+
+class PoseSubscriberNode(Node):
+
+    def __init__(self):
+        super().__init__("pose_subscriber")
+        self.pose_subscriber_ =self.create_subscription(Pose, "/turtle1/pose", self.pose_callback,10)
+    
+    def pose_callback(self, msg:Pose):
+        self.get_logger().info("("+str(msg.x)+ "-----" +str(msg.y)+ ")")
+
+def main(args= None):
+    rclpy.init(args=args)
+    node = PoseSubscriberNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+----------------------------------------------
+colcon build --symlink-install
+
+source ~/.bashrc
+
+----------------------
+
+######Create a Closed Loop System with a Publisher and a Subscriber###############
